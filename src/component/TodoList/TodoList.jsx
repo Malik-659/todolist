@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../ui/Button/Button";
 
-function TodoList({ todos }) {
+function TodoList({ todos, deleteTask }) {
   console.log(todos);
   let style = {
     color: "red",
@@ -13,6 +13,7 @@ function TodoList({ todos }) {
       <ul style={style}>
         {todos.map((task) => (
           <li
+            key={task.id}
             style={{
               border: "1px solid orange",
               borderRadius: "15px",
@@ -21,7 +22,11 @@ function TodoList({ todos }) {
             }}
           >
             <h1>Task: {task.task}</h1>
-            <Button colorText={"white"} color={"darkred"}>
+            <Button
+              onClick={() => deleteTask(task.id)}
+              colorText={"white"}
+              color={"darkred"}
+            >
               Delete
             </Button>
           </li>

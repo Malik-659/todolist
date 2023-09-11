@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function AddTodo(props) {
+function AddTodo({ handleTask }) {
   const [task, setTask] = useState("");
   const handleInput = (e) => {
     setTask(e.target.value);
@@ -17,13 +17,13 @@ function AddTodo(props) {
       id: Date.now(),
     };
     setTask("");
-    props.handleTask(newTask)
+    handleTask(newTask);
   };
 
   return (
     <div>
       <h2>Add TODO Component</h2>
-      <input type="text" onChange={handleInput} value={task}/>
+      <input type="text" onChange={handleInput} value={task} />
       <button onClick={handleAdd}>Add</button>
     </div>
   );
